@@ -23,7 +23,7 @@ sources:
           warn_after:
             count: 90
             period: day
-        loaded_at_field: "CAST(date_date AS TIMESTAMP)" # à vérifier le test de fraicheur ne marche pas
+        loaded_at_field: "CAST(date_date AS TIMESTAMP)" # pour faire le test on doit faire dbt source freshness dans le model sales
         columns:
           - name: "(date_date || '-' || orders_id || '-' || pdt_id)"
             description : primary key
