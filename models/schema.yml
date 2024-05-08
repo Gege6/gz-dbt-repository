@@ -20,10 +20,12 @@ sources:
         identifier: raw_gz_sales
         description: sales of greenweez / we have one row per products_id found in each orders_id
         freshness:
-          warn_after: {count: 90, period: day}
-        loaded_at_field: "CAST(date_date as TIMESTAMP)"
+          warn_after:
+            count: 90
+            period: day
+        loaded_at_field: "CAST(date_date AS TIMESTAMP)" # à vérifier le test de fraicheur ne marche pas
         columns:
-          - name: "(date_date || '-'' || orders_id || '-' || pdt_id)"
+          - name: "(date_date || '-' || orders_id || '-' || pdt_id)"
             description : primary key
             tests:
               - unique
