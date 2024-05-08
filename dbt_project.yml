@@ -38,5 +38,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   my_new_project:
     # Applies to all files under models/example/
-    example:
-      +materialized: table
+    mart:
+      materialized: table #dans la commande : dbt run --full-refresh pour mettre à jour
+      finance:
+        schema: finance
