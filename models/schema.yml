@@ -23,6 +23,11 @@ sources:
           warn_after: {count: 90, period: day}
         loaded_at_field: "CAST(date_date as TIMESTAMP)"
         columns:
+          - name: "(date_date || '-'' || orders_id || '-' || pdt_id)"
+            description : primary key
+            tests:
+              - unique
+              - not_null
           - name: date_date
             description: la date de l'achat
           - name: orders_id
