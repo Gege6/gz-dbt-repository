@@ -1,12 +1,11 @@
+{{ config(materialized='table') }}
 
-{{ config( materialized='table') }}
-
-SELECT
-        date_date,
-        COUNT(orders_id) AS nb_transactions,
-        SUM(revenue) AS revenue,
-        SUM(revenue) / COUNT(orders_id) AS average_basket,
-        SUM(margin) AS margin,
-        SUM(operational_margin) AS operational_margin
-    FROM {{ref('int_orders_operational')}}
-    GROUP BY date_date
+select
+    date_date,
+    count(orders_id) as nb_transactions,
+    sum(revenue) as revenue,
+    sum(revenue) / count(orders_id) as average_basket,
+    sum(margin) as margin,
+    sum(operational_margin) as operational_margin
+from {{ ref("int_orders_operational") }}
+group by date_date
